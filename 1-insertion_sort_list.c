@@ -28,19 +28,20 @@ void swap_list(listint_t **list, listint_t *num1, listint_t **num2)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *m, *z, *a;
+	listint_t *a, *b, *c;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-
-	for (m = (*list)->next; m != NULL; m = a)
+	a = (*list)->next;
+	while (a != NULL)
 	{
-		a = m->next;
-		z = m->prev;
-		while (z != NULL && m->n < z->n)
+		c = a->next;
+		b = a->prev;
+		while (b != NULL && b->n > a->n)
 		{
-			swap_list(list, z, &m);
+			swap_list(list, a, &b);
 			print_list((const listint_t *) *list);
 		}
+		a = c;
 	}
 }
