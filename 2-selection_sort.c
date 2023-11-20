@@ -1,9 +1,9 @@
 #include "sort.h"
 
 /**
- * swapi - Swaping two ints in an array.
- * @i: The first integer to swap.
- * @j: The second integer to swap.
+ * swapi - Swaping two integer in array.
+ * @i: The first integer.
+ * @j: The second integer.
  */
 void swapi(int *i, int **j)
 {
@@ -15,10 +15,10 @@ void swapi(int *i, int **j)
 }
 
 /**
- * selection_sort - Sort an array using the selection sort.
- * @array: An array of integers.
- * @size: The size of the array.
- * return: Void.
+ * selection_sort - Sort array use the selection sort.
+ * @array: array of integer.
+ * @size: size of the array.
+ * Return: Void.
  */
 void selection_sort(int *array, size_t size)
 {
