@@ -2,8 +2,8 @@
 
 /**
  * swapi - Swaping two integer in array.
- * @i: The first integer.
- * @j: The second integer.
+ * @i: first integer.
+ * @j: second integer.
  */
 void swapi(int *i, int **j)
 {
