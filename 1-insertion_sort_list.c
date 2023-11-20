@@ -11,8 +11,8 @@ void swap_list(listint_t **list, listint_t *num1, listint_t **num2)
 	(num1)->next = (*num2)->next;
 	if ((*num2)->next != NULL)
 		(*num2)->next->prev = num1;
-	(*num2)->prev = (num1)->prev;
 	(*num2)->next = num1;
+	(*num2)->prev = (num1)->prev;
 	if ((num1)->prev != NULL)
 		(num1)->prev->next = (*num2);
 	else
@@ -28,20 +28,19 @@ void swap_list(listint_t **list, listint_t *num1, listint_t **num2)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *a, *b, *c;
+	listint_t *m, *z, *a;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	a = (*list)->next;
-	while (a != NULL)
+
+	for (m = (*list)->next; m != NULL; m = a)
 	{
-		c = a->next;
-		b = a->prev;
-		while (b != NULL && b->n > a->n)
+		a = m->next;
+		z = m->prev;
+		while (z != NULL && m->n < z->n)
 		{
-			swap_list(list, b, &a);
+			swap(list, &z, &m);
 			print_list((const listint_t *) *list);
 		}
-		a = c;
 	}
 }
