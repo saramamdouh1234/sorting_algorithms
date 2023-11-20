@@ -11,8 +11,8 @@ void swap_list(listint_t **list, listint_t *num1, listint_t **num2)
 	(num1)->next = (*num2)->next;
 	if ((*num2)->next != NULL)
 		(*num2)->next->prev = num1;
-	(*num2)->next = num1;
 	(*num2)->prev = (num1)->prev;
+	(*num2)->next = num1;
 	if ((num1)->prev != NULL)
 		(num1)->prev->next = (*num2);
 	else
