@@ -1,48 +1,45 @@
 #include "sort.h"
 
 /**
- *swap - Swap 2 nodes in a listint_t doubly-linked list.
- *@hug: address to the head of the doubly-linked list.
- *@num1: address to the first node to swap.
- *@num2: second node to swap.
+ *swap - Swap 2 nodes in listint_t
+ *@list: address to the head of the ll.
+ *@node1: address to the first node.
+ *@node2: second node to swap.
  */
-void swap(listint_t **hug, listint_t **num1, listint_t **num2)
+void swap(listint_t **list, listint_t **node1, listint_t **node2)
 {
-	(*num1)->next = (*num2)->next;
-	if ((*num2)->next != NULL)
-		(*num2)->next->prev = *num1;
-	(*num2)->prev = (*num1)->prev;
-	(*num2)->next = *num1;
-	if ((*num1)->prev != NULL)
-		(*num1)->prev->next = (*num2);
+	(*node1)->next = (*node2)->next;
+	if (!(*node2)->next)
+		(*node2)->next->prev = *node1;
+	(*node2)->next = *node1;
+	(*node2)->prev = (*node1)->prev;
+	if (!(*node1)->prev)
+		(*node1)->prev->next = (*node2);
 	else
-		*
-		hug = (*num2);
-	(*num1)->prev = (*num2);
-	*num1 = (*num2)->prev;
+		*list = (*node2);
+	(*node1)->prev = (*node2);
+	*node1 = (*node2)->prev;
 }
 
 /**
- *insertion_sort_list - Insert sorts a doubly linked list
+ *insertion_sort_list - Insert sorting to a doubly linked list
  *@list: Address of  the head of a doubly-linked list of integers.
- *
- *Description: Prints the list after each swap.
  *Return: void
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *m, *z, *a;
+	listint_t *z, *a, *c;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	for (m = (*list)->next; m != NULL; m = a)
+	for (a = (*list)->next; a != NULL; a = c)
 	{
-		a = m->next;
-		z = m->prev;
-		while (z != NULL && m->n < z->n)
+		c = a->next;
+		z = a->prev;
+		while (z != NULL && a->n < z->n)
 		{
-			swap(list, &z, &m);
+			swap(list, &z, &a);
 			print_list((const listint_t *) *list);
 		}
 	}
